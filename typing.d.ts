@@ -14,3 +14,8 @@ type Quote = {
   character_id: number;
   quote: string;
 };
+
+type CharacterResponse = {
+  character: Character;
+  character_quotes: Quote[];
+};

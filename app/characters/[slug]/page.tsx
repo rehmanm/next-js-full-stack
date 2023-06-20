@@ -1,5 +1,5 @@
 import {Container} from "@/components/Container";
-import {getAllCharacters} from "@/lib/characters";
+import {getAllCharacters, getCharacterBySlug} from "@/lib/characters";
 import {endpoint} from "@/utils/endpoint";
 import React from "react";
 import Image from "next/image";
@@ -8,11 +8,6 @@ type Params = {
   params: {
     slug: string;
   };
-};
-
-type CharacterResponse = {
-  character: Character;
-  character_quotes: Quote[];
 };
 
 export default async function page({params}: Params) {
@@ -77,13 +72,4 @@ export default async function page({params}: Params) {
 export async function generateStaticParams() {
   const {characters} = await getAllCharacters();
   return characters.map((character: Character) => ({slug: character.slug}));
-}
-
-export async function getCharacterBySlug(slug: string): Promise<CharacterResponse | null> {
-  const data = await fetch(`${endpoint}/characters/${slug}`);
-  if (!data.ok) {
-    throw new Error("Failed to fetch Slug");
-  }
-
-  return data.json();
 }
