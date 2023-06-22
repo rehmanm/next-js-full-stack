@@ -21,7 +21,7 @@ export async function GET(_request: NextRequest, {params}: Params) {
     );
     return NextResponse.json({
       character,
-      character_qoutes: character_quotes.length > 0 ? character_quotes : null,
+      character_quotes: character_quotes.length > 0 ? character_quotes : null,
     });
   } catch (error) {
     return new NextResponse("Internal Server Error", {status: 500});

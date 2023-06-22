@@ -19,3 +19,14 @@ type CharacterResponse = {
   character: Character;
   character_quotes: Quote[];
 };
+
+type Quiz = {
+  id: string;
+  title: string;
+  answers: string[];
+  correct_answer: string;
+};
+
+type RandomQuizResponse = {
+  randomQuestion: string;
+};

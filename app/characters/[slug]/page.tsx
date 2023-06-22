@@ -46,25 +46,43 @@ export default async function page({params}: Params) {
             );
           })}
         </ul>
-
-        {character.skills && (
-          <>
-            <h2 className="text-xl font-bold">Power and Skills</h2>
-            <ul className="flex flex-wrap gap-1">
-              {character.skills.map((skill) => {
-                return (
-                  <li
-                    key={skill}
-                    className="flex justify-center flex-grow px-2 py-1 text-orange-400 rounded-full bg-orange-900"
-                  >
-                    {skill}
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        )}
       </div>
+
+      {character.skills && (
+        <>
+          <h2 className="text-xl font-bold">Power and Skills</h2>
+          <ul className="flex flex-wrap gap-1">
+            {character.skills.map((skill) => {
+              return (
+                <li
+                  key={skill}
+                  className="flex justify-center flex-grow px-2 py-1 text-orange-400 rounded-full bg-orange-900"
+                >
+                  {skill}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+
+      {character_quotes && (
+        <>
+          <h2 className="text-xl font-bold">Famous Quotes</h2>
+          <ul className="grid gap-5">
+            {character_quotes.map((quote: Quote, index: number) => {
+              return (
+                <li
+                  key={index}
+                  className="p-2 italic text-gray-400 border-l-4 border-green-400 rounded-md"
+                >
+                  {quote.quote}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
     </Container>
   );
 }
