@@ -9,3 +9,18 @@ export async function getRandomQuizQuestion(): Promise<RandomQuizResponse> {
 
   return data.json();
 }
+
+export async function getRandomQuestion(quiz: Quiz[]): Promise<string> {
+  const random = Math.floor(Math.random() * quiz.length);
+  return quiz[random].id;
+}
+
+export async function getQuizQuestion(id: string): Promise<QuizResponse> {
+  const question = await fetch(`${endpoint}/quiz/${id}`);
+
+  if (!question.ok) {
+    throw new Error("Failed to get question");
+  }
+
+  return question.json();
+}

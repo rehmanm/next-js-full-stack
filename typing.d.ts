@@ -27,6 +27,10 @@ type Quiz = {
   correct_answer: string;
 };
 
+type QuizResponse = {
+  question: Quiz;
+};
+
 type RandomQuizResponse = {
   randomQuestion: string;
 };
